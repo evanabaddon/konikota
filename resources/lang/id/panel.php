@@ -1,6 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'konikota',
-
+    'site_title' => 'Koni Kota Malang',
 ];

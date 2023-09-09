@@ -45,4 +45,25 @@ class Cabor extends Model
     {
         return $this->belongsToMany(Event::class);
     }
+    
+    public function medaliEmas()
+    {
+        return $this->hasMany(Pertandingan::class, 'cabor_id')->where('medali', 'emas')->count();
+    }
+
+    public function medaliPerak()
+    {
+        return $this->hasMany(Pertandingan::class, 'cabor_id')->where('medali', 'perak')->count();
+    }
+
+    public function medaliPerunggu()
+    {
+        return $this->hasMany(Pertandingan::class, 'cabor_id')->where('medali', 'perunggu')->count();
+    }
+
+    public function totalMedali()
+    {
+        return $this->medaliEmas() + $this->medaliPerak() + $this->medaliPerunggu();
+    }
+
 }

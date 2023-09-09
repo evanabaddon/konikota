@@ -15,10 +15,69 @@
                 {{ trans('global.dashboard') }}
             </a>
         </li>
+        @can('event_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.events.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/events") || request()->is("admin/events/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-calendar c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.event.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('cabor_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.cabors.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/cabors") || request()->is("admin/cabors/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-check-square c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.cabor.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('venue_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.venues.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/venues") || request()->is("admin/venues/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-map-marker c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.venue.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('pertandingan_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.pertandingans.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pertandingans") || request()->is("admin/pertandingans/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-play-circle c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.pertandingan.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('atlet_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.atlets.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/atlets") || request()->is("admin/atlets/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-users c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.atlet.title') }}
+                </a>
+            </li>
+        @endcan
+        
+        {{-- <li class="c-sidebar-nav-item">
+            <a href="{{ route("admin.systemCalendar") }}" class="c-sidebar-nav-link {{ request()->is("admin/system-calendar") || request()->is("admin/system-calendar/*") ? "c-active" : "" }}">
+                <i class="c-sidebar-nav-icon fa-fw fas fa-calendar">
+
+                </i>
+                {{ trans('global.systemCalendar') }}
+            </a>
+        </li> --}}
         @can('user_management_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/permissions*") ? "c-show" : "" }} {{ request()->is("admin/roles*") ? "c-show" : "" }} {{ request()->is("admin/users*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-users c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-user-secret c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.userManagement.title') }}
@@ -57,64 +116,6 @@
                 </ul>
             </li>
         @endcan
-        @can('event_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.events.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/events") || request()->is("admin/events/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.event.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('cabor_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.cabors.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/cabors") || request()->is("admin/cabors/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.cabor.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('venue_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.venues.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/venues") || request()->is("admin/venues/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.venue.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('pertandingan_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.pertandingans.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pertandingans") || request()->is("admin/pertandingans/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.pertandingan.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('atlet_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.atlets.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/atlets") || request()->is("admin/atlets/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.atlet.title') }}
-                </a>
-            </li>
-        @endcan
-        <li class="c-sidebar-nav-item">
-            <a href="{{ route("admin.systemCalendar") }}" class="c-sidebar-nav-link {{ request()->is("admin/system-calendar") || request()->is("admin/system-calendar/*") ? "c-active" : "" }}">
-                <i class="c-sidebar-nav-icon fa-fw fas fa-calendar">
-
-                </i>
-                {{ trans('global.systemCalendar') }}
-            </a>
-        </li>
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">
