@@ -111,7 +111,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Tanggal</th>
+                            <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
                             <th>Cabang Olahraga</th>
                             <th>Tempat</th>
@@ -147,7 +147,7 @@
                             <th>Perunggu</th>
                         </tr>
                         <tr class="total-medali"> <!-- Tambahkan baris total medali -->
-                            <th>Total</th>
+                            <th>Total Perolehan Medali</th>
                             <th>{{ $totalEmas }}</th>
                             <th>{{ $totalPerak }}</th>
                             <th>{{ $totalPerunggu }}</th>
@@ -180,7 +180,8 @@
     
             for (var i = 1; i < rowsJadwal.length; i++) {
                 var row = rowsJadwal[i];
-                var cell = row.getElementsByTagName("td")[1];
+                var cell = row.getElementsByTagName("td")[2]; // Kolom ketiga adalah Cabang Olahraga
+    
                 if (cell) {
                     if (cabangOlahraga === "Semua" || cell.textContent === cabangOlahraga) {
                         row.style.display = "";
@@ -190,11 +191,10 @@
                 }
             }
     
-            tampilkanPerolehanMedali(); // Tampilkan juga tabel perolehan medali
+            tampilkanPerolehanMedali(cabangOlahraga); // Tampilkan juga tabel perolehan medali berdasarkan cabang yang dipilih
         }
     
-        function tampilkanPerolehanMedali() {
-            var cabangOlahraga = document.getElementById("cabangOlahraga").value;
+        function tampilkanPerolehanMedali(cabangOlahraga) {
             var tabelMedali = document.getElementById("medali");
             var rowsMedali = tabelMedali.getElementsByClassName("medali-row");
     
@@ -210,11 +210,48 @@
                     }
                 }
             }
+    
+            updateTotalMedali(cabangOlahraga); // Memperbarui total medali berdasarkan cabang yang dipilih
+        }
+    
+        function updateTotalMedali(cabangOlahraga) {
+            var tabelMedali = document.getElementById("medali");
+            var totalMedaliRow = tabelMedali.getElementsByClassName("total-medali")[0];
+    
+            var totalEmas = 0;
+            var totalPerak = 0;
+            var totalPerunggu = 0;
+    
+            var rowsMedali = tabelMedali.getElementsByClassName("medali-row");
+    
+            for (var i = 0; i < rowsMedali.length; i++) {
+                var row = rowsMedali[i];
+                var cellCabang = row.getElementsByTagName("td")[0]; // Kolom pertama adalah nama Cabang Olahraga
+                var cellEmas = row.getElementsByTagName("td")[1]; // Kolom kedua adalah medali emas
+                var cellPerak = row.getElementsByTagName("td")[2]; // Kolom ketiga adalah medali perak
+                var cellPerunggu = row.getElementsByTagName("td")[3]; // Kolom keempat adalah medali perunggu
+    
+                if (cellCabang && cellEmas && cellPerak && cellPerunggu) {
+                    if (cabangOlahraga === "Semua" || cellCabang.textContent === cabangOlahraga) {
+                        totalEmas += parseInt(cellEmas.textContent);
+                        totalPerak += parseInt(cellPerak.textContent);
+                        totalPerunggu += parseInt(cellPerunggu.textContent);
+                    }
+                }
+            }
+    
+            // Update total medali
+            totalMedaliRow.getElementsByTagName("th")[1].textContent = totalEmas;
+            totalMedaliRow.getElementsByTagName("th")[2].textContent = totalPerak;
+            totalMedaliRow.getElementsByTagName("th")[3].textContent = totalPerunggu;
         }
     
         // Panggil fungsi tampilkanJadwal saat halaman dimuat
-        window.onload = tampilkanJadwal();
+        window.onload = function () {
+            tampilkanJadwal();
+        };
     </script>
+    
     
 </body>
 </html>
