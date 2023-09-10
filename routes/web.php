@@ -3,6 +3,8 @@
 // Route::redirect('/', '/login');
 // route  get WelcomeController
 Route::get('/', 'WelcomeController@index')->name('welcome');
+// get api from ApiController
+Route::get('/api', 'ApiController@index')->name('api');
 
 Route::get('/home', function () {
     if (session('status')) {

@@ -13,6 +13,8 @@ class HomeController
          $events = Event::all();
          // Mengambil data pertandingan dari database
          $pertandingans = Pertandingan::all();
+
+        
  
          // Kirim data event dan pertandingan ke view home.blade.php
          return view('home', compact('events', 'pertandingans'));

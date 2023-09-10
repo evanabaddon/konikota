@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class WelcomeController extends Controller
+class ApiController extends Controller
 {
     public function index()
     {
@@ -40,7 +40,6 @@ class WelcomeController extends Controller
                 'emas' => $cabor->emas,
                 'perak' => $cabor->perak,
                 'perunggu' => $cabor->perunggu,
-                
             ]);
         }
 
@@ -49,6 +48,15 @@ class WelcomeController extends Controller
         $totalPerak = $medalCounts->sum('perak');
         $totalPerunggu = $medalCounts->sum('perunggu');
 
-        return view('welcome', compact('latestEvent', 'cabors', 'pertandingans', 'totalEmas', 'totalPerak', 'totalPerunggu'));
+        // Send data with json format
+        return response()->json([
+            'latestEvent' => $latestEvent,
+            'cabors' => $cabors,
+            'pertandingans' => $pertandingans,
+            'totalEmas' => $totalEmas,
+            'totalPerak' => $totalPerak,
+            'totalPerunggu' => $totalPerunggu,
+        ]);
+
     }
 }
