@@ -9,6 +9,13 @@ Route::get('/home', function () {
     return redirect()->route('admin.home');
 });
 
+// route welcome
+Route::get('/', 'WelcomeController@index')->name('welcome');
+// route kalender
+Route::get('/kalender', 'WelcomeController@kalender')->name('kalender');
+// route detail event
+Route::get('/event/{id}', 'WelcomeController@event')->name('event');
+
 Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
