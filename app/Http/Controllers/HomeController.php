@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Models\Pertandingan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

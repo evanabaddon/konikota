@@ -1,11 +1,6 @@
 <?php
 
-// Route::redirect('/', '/login');
-// route  get WelcomeController
-Route::get('/', 'WelcomeController@index')->name('welcome');
-// get api from ApiController
-Route::get('/api', 'ApiController@index')->name('api');
-
+Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
@@ -32,6 +27,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Event
     Route::delete('events/destroy', 'EventController@massDestroy')->name('events.massDestroy');
+    Route::post('events/media', 'EventController@storeMedia')->name('events.storeMedia');
+    Route::post('events/ckmedia', 'EventController@storeCKEditorImages')->name('events.storeCKEditorImages');
     Route::resource('events', 'EventController');
 
     // Cabor
