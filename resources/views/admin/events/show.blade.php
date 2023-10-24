@@ -29,8 +29,8 @@
                         </th>
                         <td>
                             @if($event->image)
-                                <a href="{{ $event->image->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $event->image->getUrl('thumb') }}">
+                                <a href="{{ $event->image->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
                                 </a>
                             @endif
                         </td>

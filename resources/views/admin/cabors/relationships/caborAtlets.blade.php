@@ -25,6 +25,9 @@
                             {{ trans('cruds.atlet.fields.id') }}
                         </th>
                         <th>
+                            {{ trans('cruds.atlet.fields.nik') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.atlet.fields.name') }}
                         </th>
                         <th>
@@ -32,6 +35,12 @@
                         </th>
                         <th>
                             {{ trans('cruds.atlet.fields.cabor') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.atlet.fields.foto') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.atlet.fields.status') }}
                         </th>
                         <th>
                             &nbsp;
@@ -48,6 +57,9 @@
                                 {{ $atlet->id ?? '' }}
                             </td>
                             <td>
+                                {{ $atlet->nik ?? '' }}
+                            </td>
+                            <td>
                                 {{ $atlet->name ?? '' }}
                             </td>
                             <td>
@@ -55,6 +67,16 @@
                             </td>
                             <td>
                                 {{ $atlet->cabor->name ?? '' }}
+                            </td>
+                            <td>
+                                @if($atlet->foto)
+                                    <a href="{{ $atlet->foto->getUrl() }}" target="_blank">
+                                        {{ trans('global.view_file') }}
+                                    </a>
+                                @endif
+                            </td>
+                            <td>
+                                {{ $atlet->status ?? '' }}
                             </td>
                             <td>
                                 @can('atlet_show')

@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.atlet.fields.nik') }}
+                        </th>
+                        <td>
+                            {{ $atlet->nik }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.atlet.fields.name') }}
                         </th>
                         <td>
@@ -45,6 +53,26 @@
                         </th>
                         <td>
                             {{ $atlet->cabor->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.atlet.fields.foto') }}
+                        </th>
+                        <td>
+                            @if($atlet->foto)
+                                <a href="{{ $atlet->foto->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.atlet.fields.status') }}
+                        </th>
+                        <td>
+                            {{ $atlet->status }}
                         </td>
                     </tr>
                 </tbody>
