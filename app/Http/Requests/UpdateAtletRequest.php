@@ -17,7 +17,15 @@ class UpdateAtletRequest extends FormRequest
     public function rules()
     {
         return [
+            'nik' => [
+                'string',
+                'nullable',
+            ],
             'name' => [
+                'string',
+                'nullable',
+            ],
+            'status' => [
                 'string',
                 'nullable',
             ],

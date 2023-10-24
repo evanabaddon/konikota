@@ -10,8 +10,10 @@ class CreateAtletsTable extends Migration
     {
         Schema::create('atlets', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nik')->nullable();
             $table->string('name')->nullable();
             $table->string('kategori')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

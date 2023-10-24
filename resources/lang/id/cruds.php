@@ -105,6 +105,8 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
+            'logo'              => 'Logo',
+            'logo_helper'       => ' ',
         ],
     ],
     'venue' => [
@@ -175,6 +177,12 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
+            'nik'               => 'Nik',
+            'nik_helper'        => ' ',
+            'foto'              => 'Foto',
+            'foto_helper'       => ' ',
+            'status'            => 'Status',
+            'status_helper'     => ' ',
         ],
     ],
 

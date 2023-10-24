@@ -25,7 +25,11 @@ class EventController extends Controller
 
         $events = Event::with(['venues', 'cabors', 'media'])->get();
 
-        return view('admin.events.index', compact('events'));
+        $venues = Venue::get();
+
+        $cabors = Cabor::get();
+
+        return view('admin.events.index', compact('cabors', 'events', 'venues'));
     }
 
     public function create()

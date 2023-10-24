@@ -30,6 +30,9 @@
                             {{ trans('cruds.cabor.fields.id') }}
                         </th>
                         <th>
+                            {{ trans('cruds.cabor.fields.logo') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.cabor.fields.name') }}
                         </th>
                         <th>
@@ -41,6 +44,8 @@
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -57,6 +62,13 @@
                             </td>
                             <td>
                                 {{ $cabor->id ?? '' }}
+                            </td>
+                            <td>
+                                @if($cabor->logo)
+                                    <a href="{{ $cabor->logo->getUrl() }}" target="_blank">
+                                        {{ trans('global.view_file') }}
+                                    </a>
+                                @endif
                             </td>
                             <td>
                                 {{ $cabor->name ?? '' }}

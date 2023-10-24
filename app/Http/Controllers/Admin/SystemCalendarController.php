@@ -9,20 +9,20 @@ class SystemCalendarController extends Controller
 {
     public $sources = [
         [
-            'model'      => '\App\Models\Pertandingan',
-            'date_field' => 'tanggal',
-            'field'      => 'id',
-            'prefix'     => 'Pertandingan',
-            'suffix'     => '',
-            'route'      => 'admin.pertandingans.edit',
-        ],
-        [
             'model'      => '\App\Models\Event',
             'date_field' => 'tgl_mulai',
-            'field'      => 'tgl_mulai',
-            'prefix'     => 'Event',
+            'field'      => 'name',
+            'prefix'     => '',
             'suffix'     => '',
             'route'      => 'admin.events.edit',
+        ],
+        [
+            'model'      => '\App\Models\Pertandingan',
+            'date_field' => 'tgl_mulai',
+            'field'      => 'hasil',
+            'prefix'     => '',
+            'suffix'     => '',
+            'route'      => 'admin.pertandingans.edit',
         ],
     ];
 

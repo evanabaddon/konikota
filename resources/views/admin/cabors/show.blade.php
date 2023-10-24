@@ -25,6 +25,18 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.cabor.fields.logo') }}
+                        </th>
+                        <td>
+                            @if($cabor->logo)
+                                <a href="{{ $cabor->logo->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.cabor.fields.name') }}
                         </th>
                         <td>

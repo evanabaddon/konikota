@@ -33,6 +33,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Cabor
     Route::delete('cabors/destroy', 'CaborController@massDestroy')->name('cabors.massDestroy');
+    Route::post('cabors/media', 'CaborController@storeMedia')->name('cabors.storeMedia');
+    Route::post('cabors/ckmedia', 'CaborController@storeCKEditorImages')->name('cabors.storeCKEditorImages');
     Route::post('cabors/parse-csv-import', 'CaborController@parseCsvImport')->name('cabors.parseCsvImport');
     Route::post('cabors/process-csv-import', 'CaborController@processCsvImport')->name('cabors.processCsvImport');
     Route::resource('cabors', 'CaborController');
@@ -51,6 +53,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Atlet
     Route::delete('atlets/destroy', 'AtletController@massDestroy')->name('atlets.massDestroy');
+    Route::post('atlets/media', 'AtletController@storeMedia')->name('atlets.storeMedia');
+    Route::post('atlets/ckmedia', 'AtletController@storeCKEditorImages')->name('atlets.storeCKEditorImages');
     Route::resource('atlets', 'AtletController');
 
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');

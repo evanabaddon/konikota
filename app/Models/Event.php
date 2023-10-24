@@ -56,14 +56,7 @@ class Event extends Model implements HasMedia
 
     public function getImageAttribute()
     {
-        $file = $this->getMedia('image')->last();
-        if ($file) {
-            $file->url       = $file->getUrl();
-            $file->thumbnail = $file->getUrl('thumb');
-            $file->preview   = $file->getUrl('preview');
-        }
-
-        return $file;
+        return $this->getMedia('image')->last();
     }
 
     public function getTglMulaiAttribute($value)
