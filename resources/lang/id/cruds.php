@@ -87,6 +87,8 @@ return [
             'venue_helper'       => ' ',
             'cabor'              => 'Cabor',
             'cabor_helper'       => ' ',
+            'image'              => 'Image',
+            'image_helper'       => ' ',
         ],
     ],
     'cabor' => [

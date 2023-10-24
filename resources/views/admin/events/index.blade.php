@@ -26,6 +26,9 @@
                             {{ trans('cruds.event.fields.id') }}
                         </th>
                         <th>
+                            {{ trans('cruds.event.fields.image') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.event.fields.name') }}
                         </th>
                         <th>
@@ -53,6 +56,13 @@
                             </td>
                             <td>
                                 {{ $event->id ?? '' }}
+                            </td>
+                            <td>
+                                @if($event->image)
+                                    <a href="{{ $event->image->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $event->image->getUrl('thumb') }}">
+                                    </a>
+                                @endif
                             </td>
                             <td>
                                 {{ $event->name ?? '' }}
